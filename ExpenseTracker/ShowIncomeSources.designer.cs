@@ -40,8 +40,8 @@ namespace ExpenseTracker
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(10, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 21);
@@ -50,17 +50,17 @@ namespace ExpenseTracker
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 36);
+            this.panel1.Location = new System.Drawing.Point(10, 31);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(774, 421);
+            this.panel1.Size = new System.Drawing.Size(663, 365);
             this.panel1.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(12, 470);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(10, 407);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 15);
@@ -69,18 +69,19 @@ namespace ExpenseTracker
             // 
             // textBoxIncomeSource
             // 
-            this.textBoxIncomeSource.Location = new System.Drawing.Point(12, 491);
+            this.textBoxIncomeSource.Location = new System.Drawing.Point(10, 429);
             this.textBoxIncomeSource.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBoxIncomeSource.Name = "textBoxIncomeSource";
-            this.textBoxIncomeSource.Size = new System.Drawing.Size(258, 23);
+            this.textBoxIncomeSource.Size = new System.Drawing.Size(222, 20);
             this.textBoxIncomeSource.TabIndex = 2;
             // 
             // buttonDiscardIncomeSource
             // 
-            this.buttonDiscardIncomeSource.Location = new System.Drawing.Point(292, 490);
+            this.buttonDiscardIncomeSource.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiscardIncomeSource.Location = new System.Drawing.Point(251, 423);
             this.buttonDiscardIncomeSource.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonDiscardIncomeSource.Name = "buttonDiscardIncomeSource";
-            this.buttonDiscardIncomeSource.Size = new System.Drawing.Size(81, 22);
+            this.buttonDiscardIncomeSource.Size = new System.Drawing.Size(70, 32);
             this.buttonDiscardIncomeSource.TabIndex = 0;
             this.buttonDiscardIncomeSource.Text = "Discard";
             this.buttonDiscardIncomeSource.UseVisualStyleBackColor = true;
@@ -89,10 +90,11 @@ namespace ExpenseTracker
             // buttonSaveIncomeSource
             // 
             this.buttonSaveIncomeSource.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonSaveIncomeSource.Location = new System.Drawing.Point(397, 490);
+            this.buttonSaveIncomeSource.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveIncomeSource.Location = new System.Drawing.Point(340, 423);
             this.buttonSaveIncomeSource.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonSaveIncomeSource.Name = "buttonSaveIncomeSource";
-            this.buttonSaveIncomeSource.Size = new System.Drawing.Size(81, 22);
+            this.buttonSaveIncomeSource.Size = new System.Drawing.Size(70, 32);
             this.buttonSaveIncomeSource.TabIndex = 3;
             this.buttonSaveIncomeSource.Text = "Save";
             this.buttonSaveIncomeSource.UseVisualStyleBackColor = false;
@@ -100,9 +102,9 @@ namespace ExpenseTracker
             // 
             // ShowIncomeSources
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 531);
+            this.ClientSize = new System.Drawing.Size(676, 460);
             this.Controls.Add(this.buttonSaveIncomeSource);
             this.Controls.Add(this.buttonDiscardIncomeSource);
             this.Controls.Add(this.textBoxIncomeSource);

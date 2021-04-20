@@ -40,8 +40,8 @@ namespace ExpenseTracker
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(10, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(158, 21);
@@ -51,37 +51,39 @@ namespace ExpenseTracker
             // buttonExpenseCategorySave
             // 
             this.buttonExpenseCategorySave.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonExpenseCategorySave.Location = new System.Drawing.Point(414, 497);
+            this.buttonExpenseCategorySave.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExpenseCategorySave.Location = new System.Drawing.Point(355, 425);
             this.buttonExpenseCategorySave.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonExpenseCategorySave.Name = "buttonExpenseCategorySave";
-            this.buttonExpenseCategorySave.Size = new System.Drawing.Size(81, 22);
+            this.buttonExpenseCategorySave.Size = new System.Drawing.Size(70, 32);
             this.buttonExpenseCategorySave.TabIndex = 9;
             this.buttonExpenseCategorySave.Text = "Save";
             this.buttonExpenseCategorySave.UseVisualStyleBackColor = false;
             // 
             // buttonExpenseCategoryDiscard
             // 
-            this.buttonExpenseCategoryDiscard.Location = new System.Drawing.Point(300, 497);
+            this.buttonExpenseCategoryDiscard.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExpenseCategoryDiscard.Location = new System.Drawing.Point(258, 425);
             this.buttonExpenseCategoryDiscard.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonExpenseCategoryDiscard.Name = "buttonExpenseCategoryDiscard";
-            this.buttonExpenseCategoryDiscard.Size = new System.Drawing.Size(81, 22);
+            this.buttonExpenseCategoryDiscard.Size = new System.Drawing.Size(70, 32);
             this.buttonExpenseCategoryDiscard.TabIndex = 8;
             this.buttonExpenseCategoryDiscard.Text = "Discard";
             this.buttonExpenseCategoryDiscard.UseVisualStyleBackColor = true;
             // 
             // textBoxExpenseCategory
             // 
-            this.textBoxExpenseCategory.Location = new System.Drawing.Point(11, 498);
+            this.textBoxExpenseCategory.Location = new System.Drawing.Point(9, 431);
             this.textBoxExpenseCategory.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBoxExpenseCategory.Name = "textBoxExpenseCategory";
-            this.textBoxExpenseCategory.Size = new System.Drawing.Size(258, 23);
+            this.textBoxExpenseCategory.Size = new System.Drawing.Size(222, 20);
             this.textBoxExpenseCategory.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(11, 473);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(9, 410);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(157, 15);
@@ -90,17 +92,17 @@ namespace ExpenseTracker
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 43);
+            this.panel1.Location = new System.Drawing.Point(10, 37);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(774, 429);
+            this.panel1.Size = new System.Drawing.Size(663, 372);
             this.panel1.TabIndex = 10;
             // 
             // ShowExpenseCategories
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 531);
+            this.ClientSize = new System.Drawing.Size(676, 460);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonExpenseCategorySave);
             this.Controls.Add(this.buttonExpenseCategoryDiscard);

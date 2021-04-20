@@ -45,8 +45,8 @@ namespace ExpenseTracker
             // labelTransactionListHeading
             // 
             this.labelTransactionListHeading.AutoSize = true;
-            this.labelTransactionListHeading.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelTransactionListHeading.Location = new System.Drawing.Point(59, 26);
+            this.labelTransactionListHeading.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.labelTransactionListHeading.Location = new System.Drawing.Point(51, 23);
             this.labelTransactionListHeading.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTransactionListHeading.Name = "labelTransactionListHeading";
             this.labelTransactionListHeading.Size = new System.Drawing.Size(105, 21);
@@ -55,56 +55,60 @@ namespace ExpenseTracker
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(195, 29);
+            this.dateTimePicker1.Location = new System.Drawing.Point(167, 30);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(155, 23);
+            this.dateTimePicker1.Size = new System.Drawing.Size(133, 20);
             this.dateTimePicker1.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(195, 10);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(167, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
+            this.label2.Size = new System.Drawing.Size(63, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Start Date:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(373, 10);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(320, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 15);
+            this.label3.Size = new System.Drawing.Size(58, 15);
             this.label3.TabIndex = 3;
             this.label3.Text = "End Date:";
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(373, 29);
+            this.dateTimePicker2.Location = new System.Drawing.Point(320, 30);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(155, 23);
+            this.dateTimePicker2.Size = new System.Drawing.Size(133, 20);
             this.dateTimePicker2.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(555, 28);
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(476, 24);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 22);
+            this.button1.Size = new System.Drawing.Size(70, 32);
             this.button1.TabIndex = 5;
             this.button1.Text = "Weekly";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(655, 28);
+            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(561, 24);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 22);
+            this.button2.Size = new System.Drawing.Size(70, 32);
             this.button2.TabIndex = 6;
             this.button2.Text = "Monthly";
             this.button2.UseVisualStyleBackColor = true;
@@ -113,11 +117,12 @@ namespace ExpenseTracker
             // 
             this.tabControlTransactionList.Controls.Add(this.transactionsDetailsListView);
             this.tabControlTransactionList.Controls.Add(this.transactionsGraphView);
-            this.tabControlTransactionList.Location = new System.Drawing.Point(2, 65);
+            this.tabControlTransactionList.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlTransactionList.Location = new System.Drawing.Point(2, 56);
             this.tabControlTransactionList.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tabControlTransactionList.Name = "tabControlTransactionList";
             this.tabControlTransactionList.SelectedIndex = 0;
-            this.tabControlTransactionList.Size = new System.Drawing.Size(786, 450);
+            this.tabControlTransactionList.Size = new System.Drawing.Size(674, 390);
             this.tabControlTransactionList.TabIndex = 7;
             this.tabControlTransactionList.SelectedIndexChanged += new System.EventHandler(this.tabControlTransactionList_SelectedIndexChanged);
             // 
@@ -128,7 +133,7 @@ namespace ExpenseTracker
             this.transactionsDetailsListView.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.transactionsDetailsListView.Name = "transactionsDetailsListView";
             this.transactionsDetailsListView.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.transactionsDetailsListView.Size = new System.Drawing.Size(778, 422);
+            this.transactionsDetailsListView.Size = new System.Drawing.Size(666, 362);
             this.transactionsDetailsListView.TabIndex = 0;
             this.transactionsDetailsListView.Text = "Details List";
             this.transactionsDetailsListView.UseVisualStyleBackColor = true;
@@ -139,16 +144,16 @@ namespace ExpenseTracker
             this.transactionsGraphView.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.transactionsGraphView.Name = "transactionsGraphView";
             this.transactionsGraphView.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.transactionsGraphView.Size = new System.Drawing.Size(778, 422);
+            this.transactionsGraphView.Size = new System.Drawing.Size(666, 362);
             this.transactionsGraphView.TabIndex = 1;
             this.transactionsGraphView.Text = "Graph View";
             this.transactionsGraphView.UseVisualStyleBackColor = true;
             // 
             // ShowTransactionsList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 531);
+            this.ClientSize = new System.Drawing.Size(676, 460);
             this.Controls.Add(this.tabControlTransactionList);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
