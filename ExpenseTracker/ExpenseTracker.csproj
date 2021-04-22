@@ -64,6 +64,11 @@
     <Compile Include="EventsLeftPane.designer.cs">
       <DependentUpon>EventsLeftPane.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExpenseTrackerDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpenseTrackerDB.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FinanceLeftPane.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +81,7 @@
     <Compile Include="MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ExpenseCategoryModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowEvents.cs">
@@ -125,6 +131,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ShowEvents.resx">
       <DependentUpon>ShowEvents.cs</DependentUpon>
@@ -138,6 +145,17 @@
     <EmbeddedResource Include="ShowTransactionsList.resx">
       <DependentUpon>ShowTransactionsList.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ExpenseTrackerDB.xsc">
+      <DependentUpon>ExpenseTrackerDB.xsd</DependentUpon>
+    </None>
+    <None Include="ExpenseTrackerDB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExpenseTrackerDB.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ExpenseTrackerDB.xss">
+      <DependentUpon>ExpenseTrackerDB.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -151,5 +169,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -57,8 +57,9 @@ namespace ExpenseTracker
             this.buttonExpenseCategorySave.Name = "buttonExpenseCategorySave";
             this.buttonExpenseCategorySave.Size = new System.Drawing.Size(70, 32);
             this.buttonExpenseCategorySave.TabIndex = 9;
-            this.buttonExpenseCategorySave.Text = "Save";
+            this.buttonExpenseCategorySave.Text = global::ExpenseTracker.Properties.Resources.BTN_TXT_SAVE;
             this.buttonExpenseCategorySave.UseVisualStyleBackColor = false;
+            this.buttonExpenseCategorySave.Click += new System.EventHandler(this.save);
             // 
             // buttonExpenseCategoryDiscard
             // 
@@ -68,15 +69,16 @@ namespace ExpenseTracker
             this.buttonExpenseCategoryDiscard.Name = "buttonExpenseCategoryDiscard";
             this.buttonExpenseCategoryDiscard.Size = new System.Drawing.Size(70, 32);
             this.buttonExpenseCategoryDiscard.TabIndex = 8;
-            this.buttonExpenseCategoryDiscard.Text = "Discard";
+            this.buttonExpenseCategoryDiscard.Text = global::ExpenseTracker.Properties.Resources.BTN_TXT_DISCARD;
             this.buttonExpenseCategoryDiscard.UseVisualStyleBackColor = true;
             // 
             // textBoxExpenseCategory
             // 
+            this.textBoxExpenseCategory.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxExpenseCategory.Location = new System.Drawing.Point(9, 431);
             this.textBoxExpenseCategory.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBoxExpenseCategory.Name = "textBoxExpenseCategory";
-            this.textBoxExpenseCategory.Size = new System.Drawing.Size(222, 20);
+            this.textBoxExpenseCategory.Size = new System.Drawing.Size(222, 23);
             this.textBoxExpenseCategory.TabIndex = 7;
             // 
             // label2
