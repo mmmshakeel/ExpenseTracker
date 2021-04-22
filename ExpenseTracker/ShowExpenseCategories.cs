@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using ExpenseTracker.Models;
 
 namespace ExpenseTracker
 {
@@ -38,7 +39,9 @@ namespace ExpenseTracker
             // write to xml before forwarding to EF
             this.expenseTrackerDataSet.ExpenseCategory.WriteXml("ExpenseTrackerDB.ExpenseCategories.xml");
 
-            // forward to DB
+            // forward to DB  
+            ExpenseCategoryModel expenseCategoryModel = new ExpenseCategoryModel();
+            expenseCategoryModel.AddCategory(this.textBoxExpenseCategory.Text);
 
             // delete the xml file when sucess.
         }

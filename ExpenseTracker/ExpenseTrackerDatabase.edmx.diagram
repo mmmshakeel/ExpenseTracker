@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6a9a097899e941d192ae655100cfd25e" Name="Diagram1" >
+        <EntityTypeShape EntityType="ExpenseTrackerDatabase.ExpenseCategory" Width="1.875" PointX="0.625" PointY="0.5" />
+        <EntityTypeShape EntityType="ExpenseTrackerDatabase.IncomeSource" Width="1.5" PointX="0.5" PointY="2.625" />
+        <EntityTypeShape EntityType="ExpenseTrackerDatabase.Transaction" Width="1.5" PointX="3.875" PointY="0.5" />
+        <EntityTypeShape EntityType="ExpenseTrackerDatabase.Event" Width="1.75" PointX="7.125" PointY="0.5" />
+        <AssociationConnector Association="ExpenseTrackerDatabase.ExpenseCategoryTransaction" />
+        <AssociationConnector Association="ExpenseTrackerDatabase.IncomeSourceTransaction" />
+        <AssociationConnector Association="ExpenseTrackerDatabase.TransactionEvent" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

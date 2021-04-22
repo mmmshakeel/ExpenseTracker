@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,11 +67,35 @@
     <Compile Include="AddTransaction.designer.cs">
       <DependentUpon>AddTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Event.cs">
+      <DependentUpon>ExpenseTrackerDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="EventsLeftPane.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EventsLeftPane.designer.cs">
       <DependentUpon>EventsLeftPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseCategory.cs">
+      <DependentUpon>ExpenseTrackerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseTrackerDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpenseTrackerDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseTrackerDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpenseTrackerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseTrackerDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpenseTrackerDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseTrackerDB.cs">
+      <DependentUpon>ExpenseTrackerDB.xsd</DependentUpon>
     </Compile>
     <Compile Include="ExpenseTrackerDB.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -74,6 +107,9 @@
     </Compile>
     <Compile Include="FinanceLeftPane.designer.cs">
       <DependentUpon>FinanceLeftPane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IncomeSource.cs">
+      <DependentUpon>ExpenseTrackerDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -107,6 +143,9 @@
     </Compile>
     <Compile Include="ShowTransactionsList.designer.cs">
       <DependentUpon>ShowTransactionsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.cs">
+      <DependentUpon>ExpenseTrackerDatabase.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddEvent.resx">
       <DependentUpon>AddEvent.cs</DependentUpon>
@@ -145,6 +184,13 @@
     <EmbeddedResource Include="ShowTransactionsList.resx">
       <DependentUpon>ShowTransactionsList.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="ExpenseTrackerDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ExpenseTrackerDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ExpenseTrackerDatabase.edmx.diagram">
+      <DependentUpon>ExpenseTrackerDatabase.edmx</DependentUpon>
+    </None>
     <None Include="ExpenseTrackerDB.xsc">
       <DependentUpon>ExpenseTrackerDB.xsd</DependentUpon>
     </None>
@@ -156,6 +202,7 @@
     <None Include="ExpenseTrackerDB.xss">
       <DependentUpon>ExpenseTrackerDB.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -169,6 +216,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ExpenseTrackerDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ExpenseTrackerDatabase.Context.cs</LastGenOutput>
+      <DependentUpon>ExpenseTrackerDatabase.edmx</DependentUpon>
+    </Content>
+    <Content Include="ExpenseTrackerDatabase.edmx.sql" />
+    <Content Include="ExpenseTrackerDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ExpenseTrackerDatabase.cs</LastGenOutput>
+      <DependentUpon>ExpenseTrackerDatabase.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
