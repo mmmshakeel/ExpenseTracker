@@ -51,7 +51,7 @@ namespace ExpenseTracker.Models
             return true;
         }
 
-        public List<ExpenseCategory> getAll()
+        public List<ExpenseCategory> GetAll()
         {
             using (var ctx = new ExpenseTrackerDatabaseContainer())
             {
@@ -59,7 +59,7 @@ namespace ExpenseTracker.Models
             }
         }
 
-        public void deleteCategory(int catId)
+        public void DeleteCategory(int catId)
         {
             ExpenseCategory expenseCategory = this.db.ExpenseCategories.Find(catId);
             this.db.ExpenseCategories.Remove(expenseCategory);

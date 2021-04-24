@@ -21,7 +21,9 @@ namespace ExpenseTracker
         {
             InitializeComponent();
 
-            if (File.Exists("ExpenseTrackerDB.IncomeSources.xml") == true)
+            // recover any last entered, unsaved data
+            if (File.Exists("ExpenseTrackerDB.IncomeSources.xml") == true &&
+                this.expenseTrackerDataSet.IncomeSource.Rows.Count > 0)
             {
                 this.expenseTrackerDataSet.IncomeSource.ReadXml("ExpenseTrackerDB.IncomeSources.xml");
                 this.textBoxIncomeSource.Text = this.expenseTrackerDataSet.IncomeSource.Rows[0][1].ToString();
@@ -52,19 +54,19 @@ namespace ExpenseTracker
             {
                 return;
             }
-
-            ExpenseTrackerDB.IncomeSourceRow incomeSourceRow = this.expenseTrackerDataSet.IncomeSource.NewIncomeSourceRow();
-            incomeSourceRow.Name = this.textBoxIncomeSource.Text;
-
-            this.expenseTrackerDataSet.IncomeSource.AddIncomeSourceRow(incomeSourceRow);
-            this.expenseTrackerDataSet.AcceptChanges();
-
-            // write to xml before forwarding to DB
-            this.expenseTrackerDataSet.ExpenseCategory.WriteXml("ExpenseTrackerDB.IncomeSources.xml");
-
+           
             // forward to DB  
             try
             {
+
+                ExpenseTrackerDB.IncomeSourceRow incomeSourceRow = this.expenseTrackerDataSet.IncomeSource.NewIncomeSourceRow();
+                incomeSourceRow.Name = this.textBoxIncomeSource.Text;
+
+                this.expenseTrackerDataSet.IncomeSource.AddIncomeSourceRow(incomeSourceRow);
+                this.expenseTrackerDataSet.AcceptChanges();
+
+                // write to xml before forwarding to DB
+                this.expenseTrackerDataSet.ExpenseCategory.WriteXml("ExpenseTrackerDB.IncomeSources.xml");
 
                 if (this.incomeSourceModel.AddIncomeSource(this.textBoxIncomeSource.Text) == true)
                 {
@@ -84,7 +86,7 @@ namespace ExpenseTracker
 
         private List<IncomeSource> GetList()
         {
-            return this.incomeSourceModel.getAll();
+            return this.incomeSourceModel.GetAll();
         }
 
         private void ShowIncomeSourceList()
@@ -128,7 +130,7 @@ namespace ExpenseTracker
             if (result == DialogResult.Yes)
             {
                 int catId = ((CategoryButton)sender).Id;
-                this.incomeSourceModel.deleteIncomeSource(catId);
+                this.incomeSourceModel.DeleteIncomeSource(catId);
 
                 // refresh list
                 this.ShowIncomeSourceList();
@@ -201,7 +203,7 @@ namespace ExpenseTracker
 
         private void Discard(object sender, EventArgs e)
         {
-            this.textBoxIncomeSource.Text = "";
+            this.textBoxIncomeSource.Text = String.Empty;
             this.updateButton.Id = 0;
             this.updateButton.Visible = false;
             this.buttonIncomeSourceSave.Visible = true;

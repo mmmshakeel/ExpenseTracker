@@ -11,7 +11,7 @@ namespace ExpenseTracker.Models
         private ExpenseTrackerDatabaseContainer db = new ExpenseTrackerDatabaseContainer();
 
 
-        public Boolean AddIncomeSource(String name)
+        public bool AddIncomeSource(String name)
         {
 
             // income source name is unique
@@ -30,7 +30,7 @@ namespace ExpenseTracker.Models
         }
 
 
-        public Boolean UpdateIncomeSource(String name, int incomeId)
+        public bool UpdateIncomeSource(String name, int incomeId)
         {
 
             // expense category name is unique
@@ -52,7 +52,7 @@ namespace ExpenseTracker.Models
             return true;
         }
 
-        public List<IncomeSource> getAll()
+        public List<IncomeSource> GetAll()
         {
             using (var ctx = new ExpenseTrackerDatabaseContainer())
             {
@@ -60,7 +60,7 @@ namespace ExpenseTracker.Models
             }
         }
 
-        public void deleteIncomeSource(int incomeId)
+        public void DeleteIncomeSource(int incomeId)
         {
             IncomeSource incomeSource = this.db.IncomeSources.Find(incomeId);
             this.db.IncomeSources.Remove(incomeSource);

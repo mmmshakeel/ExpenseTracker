@@ -22,7 +22,9 @@ namespace ExpenseTracker
         {
             InitializeComponent();
 
-            if (File.Exists("ExpenseTrackerDB.ExpenseCategories.xml") == true)
+            // recover any last entered, unsaved data
+            if (File.Exists("ExpenseTrackerDB.ExpenseCategories.xml") == true &&
+                this.expenseTrackerDataSet.ExpenseCategory.Rows.Count > 0)
             {
                 this.expenseTrackerDataSet.ExpenseCategory.ReadXml("ExpenseTrackerDB.ExpenseCategories.xml");
                 this.textBoxExpenseCategory.Text = this.expenseTrackerDataSet.ExpenseCategory.Rows[0][1].ToString();
@@ -85,7 +87,7 @@ namespace ExpenseTracker
 
         private List<ExpenseCategory> GetList()
         {
-            return this.expenseCategoryModel.getAll();
+            return this.expenseCategoryModel.GetAll();
         }
 
         private void ShowExpenseList()
@@ -129,7 +131,7 @@ namespace ExpenseTracker
             if (result == DialogResult.Yes)
             {
                 int catId = ((CategoryButton)sender).Id;
-                this.expenseCategoryModel.deleteCategory(catId);
+                this.expenseCategoryModel.DeleteCategory(catId);
 
                 // refresh list
                 this.ShowExpenseList();
@@ -203,7 +205,7 @@ namespace ExpenseTracker
 
         private void Discard(object sender, EventArgs e)
         {
-            this.textBoxExpenseCategory.Text = "";
+            this.textBoxExpenseCategory.Text = String.Empty;
             this.updateButton.Id = 0;
             this.updateButton.Visible = false;
             this.buttonExpenseCategorySave.Visible = true;

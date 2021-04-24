@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Models\ExpenseCategoryModel.cs" />
     <Compile Include="Models\IncomeSourceModel.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowEvents.cs">

@@ -82,7 +82,7 @@ namespace ExpenseTracker
             this.textTransactionAmount.Size = new System.Drawing.Size(151, 20);
             this.textTransactionAmount.TabIndex = 3;
             this.textTransactionAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textTransactionAmount.TextChanged += new System.EventHandler(this.textTransactionAmount_TextChanged);
+            this.textTransactionAmount.Leave += new System.EventHandler(this.AmountFormat);
             // 
             // comboTransactionType
             // 
@@ -94,6 +94,7 @@ namespace ExpenseTracker
             this.comboTransactionType.Name = "comboTransactionType";
             this.comboTransactionType.Size = new System.Drawing.Size(104, 21);
             this.comboTransactionType.TabIndex = 4;
+            this.comboTransactionType.SelectedIndexChanged += new System.EventHandler(this.UpdateCategoryList);
             // 
             // comboTransactionCategory
             // 
