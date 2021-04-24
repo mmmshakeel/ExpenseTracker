@@ -22,7 +22,7 @@ namespace ExpenseTracker.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ExpenseTracker.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExpenseTracker.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace ExpenseTracker.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ExpenseTracker.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Discard.
         /// </summary>
-        internal static string BTN_TXT_DISCARD {
+        public static string BTN_TXT_DISCARD {
             get {
                 return ResourceManager.GetString("BTN_TXT_DISCARD", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ExpenseTracker.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
-        internal static string BTN_TXT_SAVE {
+        public static string BTN_TXT_SAVE {
             get {
                 return ResourceManager.GetString("BTN_TXT_SAVE", resourceCulture);
             }
@@ -81,16 +81,56 @@ namespace ExpenseTracker.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Add/Edit Expense Category.
         /// </summary>
-        internal static string EXPENSE_CAT_ADD_EDIT {
+        public static string EXPENSE_CAT_ADD_EDIT {
             get {
                 return ResourceManager.GetString("EXPENSE_CAT_ADD_EDIT", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_delete {
+            get {
+                object obj = ResourceManager.GetObject("img_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_delete_2 {
+            get {
+                object obj = ResourceManager.GetObject("img_delete_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap img_edit {
+            get {
+                object obj = ResourceManager.GetObject("img_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] svg_img_edit {
+            get {
+                object obj = ResourceManager.GetObject("svg_img_edit", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expense Categories.
         /// </summary>
-        internal static string TITLE_EXP_CAT {
+        public static string TITLE_EXP_CAT {
             get {
                 return ResourceManager.GetString("TITLE_EXP_CAT", resourceCulture);
             }

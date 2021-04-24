@@ -67,6 +67,9 @@
     <Compile Include="AddTransaction.designer.cs">
       <DependentUpon>AddTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomElements\CategoryButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Event.cs">
       <DependentUpon>ExpenseTrackerDatabase.tt</DependentUpon>
     </Compile>
@@ -78,6 +81,12 @@
     </Compile>
     <Compile Include="ExpenseCategory.cs">
       <DependentUpon>ExpenseTrackerDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseCategoryRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExpenseCategoryRow.Designer.cs">
+      <DependentUpon>ExpenseCategoryRow.cs</DependentUpon>
     </Compile>
     <Compile Include="ExpenseTrackerDatabase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -156,6 +165,9 @@
     <EmbeddedResource Include="EventsLeftPane.resx">
       <DependentUpon>EventsLeftPane.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExpenseCategoryRow.resx">
+      <DependentUpon>ExpenseCategoryRow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FinanceLeftPane.resx">
       <DependentUpon>FinanceLeftPane.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,7 +175,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -228,6 +240,12 @@
       <LastGenOutput>ExpenseTrackerDatabase.cs</LastGenOutput>
       <DependentUpon>ExpenseTrackerDatabase.edmx</DependentUpon>
     </Content>
+    <None Include="Resources\iconfinder_exit-delete-remove-close-x_2931151.png" />
+    <None Include="Resources\iconfinder_trash-delete-remove_2931168.png" />
+    <None Include="Resources\svg_img_edit.svg" />
+    <None Include="Resources\iconfinder_edit-change-pencil_2931178.png" />
+    <None Include="Resources\hardwood-tree.jpg" />
+    <None Include="Resources\EDIT_ICON.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
