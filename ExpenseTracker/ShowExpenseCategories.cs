@@ -13,8 +13,7 @@ namespace ExpenseTracker
 {
     public partial class ShowExpenseCategories : Form
     {
-        //public const String ExpenseCategoriesFileName = "ExpenseCategories.xml";
-
+       
         ExpenseTrackerDB expenseTrackerDataSet = new ExpenseTrackerDB();
         ExpenseCategoryModel expenseCategoryModel = new ExpenseCategoryModel();
         CategoryButton updateButton;
@@ -68,9 +67,8 @@ namespace ExpenseTracker
             // forward to DB  
             try
             {
-                ExpenseCategoryModel expenseCategoryModel = new ExpenseCategoryModel();
 
-                if (expenseCategoryModel.AddCategory(this.textBoxExpenseCategory.Text) == true)
+                if (this.expenseCategoryModel.AddCategory(this.textBoxExpenseCategory.Text) == true)
                 {
                     // delete the xml file when sucess.
                     this.deleteFile("ExpenseTrackerDB.ExpenseCategories.xml");

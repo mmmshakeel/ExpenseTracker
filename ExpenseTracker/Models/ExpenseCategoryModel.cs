@@ -10,10 +10,6 @@ namespace ExpenseTracker.Models
     {
         private ExpenseTrackerDatabaseContainer db = new ExpenseTrackerDatabaseContainer();
 
-        public ExpenseCategoryModel()
-        {
-           // this.db = new ExpenseTrackerDatabaseContainer();
-        }
 
         public Boolean AddCategory(String name)
         {
