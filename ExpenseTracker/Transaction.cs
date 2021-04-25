@@ -24,8 +24,8 @@ namespace ExpenseTracker
         public int ExpenseCategoryId { get; set; }
         public int IncomeSourceId { get; set; }
     
+        public virtual Event Event { get; set; }
         public virtual ExpenseCategory ExpenseCategory { get; set; }
         public virtual IncomeSource IncomeSource { get; set; }
-        public virtual Event Event { get; set; }
     }
 }

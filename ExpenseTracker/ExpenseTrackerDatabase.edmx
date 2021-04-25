@@ -10,6 +10,10 @@
     <EntitySet Name="IncomeSources" EntityType="ExpenseTrackerDatabase.Store.IncomeSources" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Transactions" EntityType="ExpenseTrackerDatabase.Store.Transactions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Events" EntityType="ExpenseTrackerDatabase.Store.Events" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="TransactionEvent" Association="ExpenseTrackerDatabase.Store.TransactionEvent">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
     <AssociationSet Name="ExpenseCategoryTransaction" Association="ExpenseTrackerDatabase.Store.ExpenseCategoryTransaction">
       <End Role="ExpenseCategory" EntitySet="ExpenseCategories" />
       <End Role="Transaction" EntitySet="Transactions" />
@@ -17,10 +21,6 @@
     <AssociationSet Name="IncomeSourceTransaction" Association="ExpenseTrackerDatabase.Store.IncomeSourceTransaction">
       <End Role="IncomeSource" EntitySet="IncomeSources" />
       <End Role="Transaction" EntitySet="Transactions" />
-    </AssociationSet>
-    <AssociationSet Name="TransactionEvent" Association="ExpenseTrackerDatabase.Store.TransactionEvent">
-      <End Role="Transaction" EntitySet="Transactions" />
-      <End Role="Event" EntitySet="Events" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ExpenseCategories">
@@ -50,6 +50,8 @@
     <Property Name="RecurrentType" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ExpenseCategoryId" Type="int" Nullable="false" />
     <Property Name="IncomeSourceId" Type="int" Nullable="false" />
+    <Property Name="ExpenseCategory_Id" Type="int" Nullable="true" />
+    <Property Name="IncomeSource_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Events">
     <Key>
@@ -67,30 +69,6 @@
     <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Transaction_Id" Type="int" Nullable="true" />
   </EntityType>
-  <Association Name="ExpenseCategoryTransaction">
-    <End Role="ExpenseCategory" Type="ExpenseTrackerDatabase.Store.ExpenseCategories" Multiplicity="1" />
-    <End Role="Transaction" Type="ExpenseTrackerDatabase.Store.Transactions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ExpenseCategory">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Transaction">
-        <PropertyRef Name="ExpenseCategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="IncomeSourceTransaction">
-    <End Role="IncomeSource" Type="ExpenseTrackerDatabase.Store.IncomeSources" Multiplicity="1" />
-    <End Role="Transaction" Type="ExpenseTrackerDatabase.Store.Transactions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="IncomeSource">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Transaction">
-        <PropertyRef Name="IncomeSourceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="TransactionEvent">
     <End Role="Transaction" Type="ExpenseTrackerDatabase.Store.Transactions" Multiplicity="0..1" />
     <End Role="Event" Type="ExpenseTrackerDatabase.Store.Events" Multiplicity="*" />
@@ -103,6 +81,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ExpenseCategoryTransaction">
+    <End Role="ExpenseCategory" Type="ExpenseTrackerDatabase.Store.ExpenseCategories" Multiplicity="0..1" />
+    <End Role="Transaction" Type="ExpenseTrackerDatabase.Store.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExpenseCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="ExpenseCategory_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IncomeSourceTransaction">
+    <End Role="IncomeSource" Type="ExpenseTrackerDatabase.Store.IncomeSources" Multiplicity="0..1" />
+    <End Role="Transaction" Type="ExpenseTrackerDatabase.Store.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IncomeSource">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="IncomeSource_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -112,6 +114,10 @@
           <EntitySet Name="IncomeSources" EntityType="ExpenseTrackerDatabase.IncomeSource" />
           <EntitySet Name="Transactions" EntityType="ExpenseTrackerDatabase.Transaction" />
           <EntitySet Name="Events" EntityType="ExpenseTrackerDatabase.Event" />
+          <AssociationSet Name="TransactionEvent" Association="ExpenseTrackerDatabase.TransactionEvent">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
           <AssociationSet Name="ExpenseCategoryTransaction" Association="ExpenseTrackerDatabase.ExpenseCategoryTransaction">
             <End Role="ExpenseCategory" EntitySet="ExpenseCategories" />
             <End Role="Transaction" EntitySet="Transactions" />
@@ -120,10 +126,6 @@
             <End Role="IncomeSource" EntitySet="IncomeSources" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
-          <AssociationSet Name="TransactionEvent" Association="ExpenseTrackerDatabase.TransactionEvent">
-            <End Role="Transaction" EntitySet="Transactions" />
-            <End Role="Event" EntitySet="Events" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ExpenseCategory">
           <Key>
@@ -131,7 +133,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Transactions" Relationship="ExpenseTrackerDatabase.ExpenseCategoryTransaction" FromRole="ExpenseCategory" ToRole="Transaction" />
+          <NavigationProperty Name="Transaction" Relationship="ExpenseTrackerDatabase.ExpenseCategoryTransaction" FromRole="ExpenseCategory" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="IncomeSource">
           <Key>
@@ -139,7 +141,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Transactions" Relationship="ExpenseTrackerDatabase.IncomeSourceTransaction" FromRole="IncomeSource" ToRole="Transaction" />
+          <NavigationProperty Name="Transaction" Relationship="ExpenseTrackerDatabase.IncomeSourceTransaction" FromRole="IncomeSource" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -152,11 +154,11 @@
           <Property Name="Amount" Type="Double" Nullable="false" />
           <Property Name="TransactionType" Type="String" Nullable="false" />
           <Property Name="RecurrentType" Type="String" Nullable="false" />
-          <NavigationProperty Name="ExpenseCategory" Relationship="ExpenseTrackerDatabase.ExpenseCategoryTransaction" FromRole="Transaction" ToRole="ExpenseCategory" />
           <Property Name="ExpenseCategoryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="IncomeSource" Relationship="ExpenseTrackerDatabase.IncomeSourceTransaction" FromRole="Transaction" ToRole="IncomeSource" />
           <Property Name="IncomeSourceId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Event" Relationship="ExpenseTrackerDatabase.TransactionEvent" FromRole="Transaction" ToRole="Event" />
+          <NavigationProperty Name="ExpenseCategory" Relationship="ExpenseTrackerDatabase.ExpenseCategoryTransaction" FromRole="Transaction" ToRole="ExpenseCategory" />
+          <NavigationProperty Name="IncomeSource" Relationship="ExpenseTrackerDatabase.IncomeSourceTransaction" FromRole="Transaction" ToRole="IncomeSource" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -174,33 +176,17 @@
           <Property Name="Details" Type="String" Nullable="false" />
           <NavigationProperty Name="Transaction" Relationship="ExpenseTrackerDatabase.TransactionEvent" FromRole="Event" ToRole="Transaction" />
         </EntityType>
-        <Association Name="ExpenseCategoryTransaction">
-          <End Type="ExpenseTrackerDatabase.ExpenseCategory" Role="ExpenseCategory" Multiplicity="1" />
-          <End Type="ExpenseTrackerDatabase.Transaction" Role="Transaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ExpenseCategory">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Transaction">
-              <PropertyRef Name="ExpenseCategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="IncomeSourceTransaction">
-          <End Type="ExpenseTrackerDatabase.IncomeSource" Role="IncomeSource" Multiplicity="1" />
-          <End Type="ExpenseTrackerDatabase.Transaction" Role="Transaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IncomeSource">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Transaction">
-              <PropertyRef Name="IncomeSourceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="TransactionEvent">
           <End Type="ExpenseTrackerDatabase.Transaction" Role="Transaction" Multiplicity="0..1" />
           <End Type="ExpenseTrackerDatabase.Event" Role="Event" Multiplicity="0..1" />
+        </Association>
+        <Association Name="ExpenseCategoryTransaction">
+          <End Type="ExpenseTrackerDatabase.ExpenseCategory" Role="ExpenseCategory" Multiplicity="0..1" />
+          <End Type="ExpenseTrackerDatabase.Transaction" Role="Transaction" Multiplicity="0..1" />
+        </Association>
+        <Association Name="IncomeSourceTransaction">
+          <End Type="ExpenseTrackerDatabase.IncomeSource" Role="IncomeSource" Multiplicity="0..1" />
+          <End Type="ExpenseTrackerDatabase.Transaction" Role="Transaction" Multiplicity="0..1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -263,6 +249,24 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
       <Condition ColumnName="Transaction_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ExpenseCategoryTransaction" TypeName="ExpenseTrackerDatabase.ExpenseCategoryTransaction" StoreEntitySet="Transactions">
+      <EndProperty Name="ExpenseCategory">
+        <ScalarProperty Name="Id" ColumnName="ExpenseCategory_Id" />
+      </EndProperty>
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="ExpenseCategory_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="IncomeSourceTransaction" TypeName="ExpenseTrackerDatabase.IncomeSourceTransaction" StoreEntitySet="Transactions">
+      <EndProperty Name="IncomeSource">
+        <ScalarProperty Name="Id" ColumnName="IncomeSource_Id" />
+      </EndProperty>
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="IncomeSource_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>

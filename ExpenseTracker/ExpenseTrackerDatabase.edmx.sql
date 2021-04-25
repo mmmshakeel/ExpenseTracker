@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/22/2021 23:05:08
+-- Date Created: 04/25/2021 14:00:29
 -- Generated from EDMX file: C:\Users\Shakeel\Documents\CW2\Code\ExpenseTracker\ExpenseTracker\ExpenseTrackerDatabase.edmx
 -- --------------------------------------------------
 
@@ -17,14 +17,14 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_ExpenseCategoryTransaction]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Transactions] DROP CONSTRAINT [FK_ExpenseCategoryTransaction];
-GO
-IF OBJECT_ID(N'[dbo].[FK_IncomeSourceTransaction]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Transactions] DROP CONSTRAINT [FK_IncomeSourceTransaction];
-GO
 IF OBJECT_ID(N'[dbo].[FK_TransactionEvent]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Events] DROP CONSTRAINT [FK_TransactionEvent];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TransactionIncomeSource]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[IncomeSources] DROP CONSTRAINT [FK_TransactionIncomeSource];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TransactionExpenseCategory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ExpenseCategories] DROP CONSTRAINT [FK_TransactionExpenseCategory];
 GO
 
 -- --------------------------------------------------
@@ -72,7 +72,9 @@ CREATE TABLE [dbo].[Transactions] (
     [TransactionType] nvarchar(max)  NOT NULL,
     [RecurrentType] nvarchar(max)  NOT NULL,
     [ExpenseCategoryId] int  NOT NULL,
-    [IncomeSourceId] int  NOT NULL
+    [IncomeSourceId] int  NOT NULL,
+    [ExpenseCategory_Id] int  NULL,
+    [IncomeSource_Id] int  NULL
 );
 GO
 
@@ -124,36 +126,6 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [ExpenseCategoryId] in table 'Transactions'
-ALTER TABLE [dbo].[Transactions]
-ADD CONSTRAINT [FK_ExpenseCategoryTransaction]
-    FOREIGN KEY ([ExpenseCategoryId])
-    REFERENCES [dbo].[ExpenseCategories]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ExpenseCategoryTransaction'
-CREATE INDEX [IX_FK_ExpenseCategoryTransaction]
-ON [dbo].[Transactions]
-    ([ExpenseCategoryId]);
-GO
-
--- Creating foreign key on [IncomeSourceId] in table 'Transactions'
-ALTER TABLE [dbo].[Transactions]
-ADD CONSTRAINT [FK_IncomeSourceTransaction]
-    FOREIGN KEY ([IncomeSourceId])
-    REFERENCES [dbo].[IncomeSources]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_IncomeSourceTransaction'
-CREATE INDEX [IX_FK_IncomeSourceTransaction]
-ON [dbo].[Transactions]
-    ([IncomeSourceId]);
-GO
-
 -- Creating foreign key on [Transaction_Id] in table 'Events'
 ALTER TABLE [dbo].[Events]
 ADD CONSTRAINT [FK_TransactionEvent]
@@ -167,6 +139,36 @@ GO
 CREATE INDEX [IX_FK_TransactionEvent]
 ON [dbo].[Events]
     ([Transaction_Id]);
+GO
+
+-- Creating foreign key on [ExpenseCategory_Id] in table 'Transactions'
+ALTER TABLE [dbo].[Transactions]
+ADD CONSTRAINT [FK_ExpenseCategoryTransaction]
+    FOREIGN KEY ([ExpenseCategory_Id])
+    REFERENCES [dbo].[ExpenseCategories]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ExpenseCategoryTransaction'
+CREATE INDEX [IX_FK_ExpenseCategoryTransaction]
+ON [dbo].[Transactions]
+    ([ExpenseCategory_Id]);
+GO
+
+-- Creating foreign key on [IncomeSource_Id] in table 'Transactions'
+ALTER TABLE [dbo].[Transactions]
+ADD CONSTRAINT [FK_IncomeSourceTransaction]
+    FOREIGN KEY ([IncomeSource_Id])
+    REFERENCES [dbo].[IncomeSources]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_IncomeSourceTransaction'
+CREATE INDEX [IX_FK_IncomeSourceTransaction]
+ON [dbo].[Transactions]
+    ([IncomeSource_Id]);
 GO
 
 -- --------------------------------------------------

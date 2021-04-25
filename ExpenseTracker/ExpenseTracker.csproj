@@ -158,6 +158,7 @@
     <Compile Include="Transaction.cs">
       <DependentUpon>ExpenseTrackerDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="TransactionDetails.cs" />
     <EmbeddedResource Include="AddEvent.resx">
       <DependentUpon>AddEvent.cs</DependentUpon>
     </EmbeddedResource>

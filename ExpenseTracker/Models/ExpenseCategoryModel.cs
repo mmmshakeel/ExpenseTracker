@@ -24,6 +24,8 @@ namespace ExpenseTracker.Models
             ExpenseCategory expenseCategory = new ExpenseCategory();
             expenseCategory.Name = name;
             this.db.ExpenseCategories.Add(expenseCategory);
+
+
             this.db.SaveChanges();
 
             return true;
