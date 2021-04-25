@@ -98,6 +98,7 @@ namespace ExpenseTracker
             // 
             // dateTimeEventFrom
             // 
+            this.dateTimeEventFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeEventFrom.Location = new System.Drawing.Point(51, 190);
             this.dateTimeEventFrom.Name = "dateTimeEventFrom";
             this.dateTimeEventFrom.Size = new System.Drawing.Size(141, 20);
@@ -105,6 +106,7 @@ namespace ExpenseTracker
             // 
             // dateTimeEventTo
             // 
+            this.dateTimeEventTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeEventTo.Location = new System.Drawing.Point(209, 190);
             this.dateTimeEventTo.Name = "dateTimeEventTo";
             this.dateTimeEventTo.Size = new System.Drawing.Size(141, 20);
@@ -155,6 +157,8 @@ namespace ExpenseTracker
             this.textBoxEventCost.Name = "textBoxEventCost";
             this.textBoxEventCost.Size = new System.Drawing.Size(161, 20);
             this.textBoxEventCost.TabIndex = 10;
+            this.textBoxEventCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxEventCost.Leave += new System.EventHandler(this.CostFormat);
             // 
             // textBoxEventDetails
             // 
@@ -269,7 +273,7 @@ namespace ExpenseTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 460);
+            this.ClientSize = new System.Drawing.Size(676, 485);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboEventType);

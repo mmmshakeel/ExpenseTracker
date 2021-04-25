@@ -18,12 +18,13 @@ namespace ExpenseTracker
         public string Name { get; set; }
         public string EventType { get; set; }
         public string Location { get; set; }
-        public string From { get; set; }
-        public string To { get; set; }
+        public System.DateTime From { get; set; }
+        public Nullable<System.DateTime> To { get; set; }
         public string Repeat { get; set; }
         public string Currency { get; set; }
-        public string Cost { get; set; }
+        public double Cost { get; set; }
         public string Details { get; set; }
+        public string Reminder { get; set; }
     
         public virtual Transaction Transaction { get; set; }
     }

@@ -33,9 +33,6 @@ namespace ExpenseTracker
             {
                 this.expenseTrackerDataSet.ReadXml("ExpenseTrackerDB.Transaction.xml");
 
-                Console.WriteLine(this.expenseTrackerDataSet.ExpenseCategory.Rows[0][0]);
-                Console.WriteLine(this.expenseTrackerDataSet.ExpenseCategory.Rows[0][1]);
-
                 this.textTransactionDetails.Text = this.expenseTrackerDataSet.Transaction.Rows[0][1].ToString();
                 this.dateTimeTransaction.Value = this.ConvertStringToDate(
                     this.expenseTrackerDataSet.Transaction.Rows[0][2].ToString());

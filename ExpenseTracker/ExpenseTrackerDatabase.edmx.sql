@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/25/2021 14:00:29
+-- Date Created: 04/25/2021 19:53:58
 -- Generated from EDMX file: C:\Users\Shakeel\Documents\CW2\Code\ExpenseTracker\ExpenseTracker\ExpenseTrackerDatabase.edmx
 -- --------------------------------------------------
 
@@ -20,11 +20,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_TransactionEvent]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Events] DROP CONSTRAINT [FK_TransactionEvent];
 GO
-IF OBJECT_ID(N'[dbo].[FK_TransactionIncomeSource]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[IncomeSources] DROP CONSTRAINT [FK_TransactionIncomeSource];
+IF OBJECT_ID(N'[dbo].[FK_ExpenseCategoryTransaction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Transactions] DROP CONSTRAINT [FK_ExpenseCategoryTransaction];
 GO
-IF OBJECT_ID(N'[dbo].[FK_TransactionExpenseCategory]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ExpenseCategories] DROP CONSTRAINT [FK_TransactionExpenseCategory];
+IF OBJECT_ID(N'[dbo].[FK_IncomeSourceTransaction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Transactions] DROP CONSTRAINT [FK_IncomeSourceTransaction];
 GO
 
 -- --------------------------------------------------
@@ -83,13 +83,14 @@ CREATE TABLE [dbo].[Events] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [EventType] nvarchar(max)  NOT NULL,
-    [Location] nvarchar(max)  NOT NULL,
-    [From] nvarchar(max)  NOT NULL,
-    [To] nvarchar(max)  NOT NULL,
+    [Location] nvarchar(max)  NULL,
+    [From] datetime  NOT NULL,
+    [To] datetime  NULL,
     [Repeat] nvarchar(max)  NOT NULL,
     [Currency] nvarchar(max)  NOT NULL,
-    [Cost] nvarchar(max)  NOT NULL,
-    [Details] nvarchar(max)  NOT NULL,
+    [Cost] float  NOT NULL,
+    [Details] nvarchar(max)  NULL,
+    [Reminder] nvarchar(max)  NULL,
     [Transaction_Id] int  NULL
 );
 GO

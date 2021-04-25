@@ -60,13 +60,14 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="EventType" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="From" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="To" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Location" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="From" Type="datetime" Nullable="false" />
+    <Property Name="To" Type="datetime" Nullable="true" />
     <Property Name="Repeat" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Currency" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Cost" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cost" Type="float" Nullable="false" />
+    <Property Name="Details" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Reminder" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Transaction_Id" Type="int" Nullable="true" />
   </EntityType>
   <Association Name="TransactionEvent">
@@ -167,14 +168,15 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="EventType" Type="String" Nullable="false" />
-          <Property Name="Location" Type="String" Nullable="false" />
-          <Property Name="From" Type="String" Nullable="false" />
-          <Property Name="To" Type="String" Nullable="false" />
+          <Property Name="Location" Type="String" Nullable="true" />
+          <Property Name="From" Type="DateTime" Nullable="false" />
+          <Property Name="To" Type="DateTime" Nullable="true" />
           <Property Name="Repeat" Type="String" Nullable="false" />
           <Property Name="Currency" Type="String" Nullable="false" />
-          <Property Name="Cost" Type="String" Nullable="false" />
-          <Property Name="Details" Type="String" Nullable="false" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+          <Property Name="Details" Type="String" Nullable="true" />
           <NavigationProperty Name="Transaction" Relationship="ExpenseTrackerDatabase.TransactionEvent" FromRole="Event" ToRole="Transaction" />
+          <Property Name="Reminder" Type="String" Nullable="true" />
         </EntityType>
         <Association Name="TransactionEvent">
           <End Type="ExpenseTrackerDatabase.Transaction" Role="Transaction" Multiplicity="0..1" />
@@ -238,6 +240,7 @@
           <ScalarProperty Name="Currency" ColumnName="Currency" />
           <ScalarProperty Name="Cost" ColumnName="Cost" />
           <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Reminder" ColumnName="Reminder" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

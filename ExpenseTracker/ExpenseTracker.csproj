@@ -73,6 +73,7 @@
     <Compile Include="Event.cs">
       <DependentUpon>ExpenseTrackerDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="EventDetails.cs" />
     <Compile Include="EventsLeftPane.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +127,7 @@
     <Compile Include="MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\ExpenseCategoryModel.cs" />
     <Compile Include="Models\IncomeSourceModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />

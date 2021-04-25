@@ -71,7 +71,6 @@ namespace ExpenseTracker
             this.buttonExpenseCategoryDiscard.TabIndex = 8;
             this.buttonExpenseCategoryDiscard.Text = global::ExpenseTracker.Properties.Resources.BTN_TXT_DISCARD;
             this.buttonExpenseCategoryDiscard.UseVisualStyleBackColor = true;
-            this.buttonExpenseCategoryDiscard.Click += new System.EventHandler(this.Discard);
             // 
             // textBoxExpenseCategory
             // 
@@ -100,7 +99,7 @@ namespace ExpenseTracker
             this.panelExpenseCategories.Location = new System.Drawing.Point(11, 37);
             this.panelExpenseCategories.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panelExpenseCategories.Name = "panelExpenseCategories";
-            this.panelExpenseCategories.Size = new System.Drawing.Size(630, 372);
+            this.panelExpenseCategories.Size = new System.Drawing.Size(600, 372);
             this.panelExpenseCategories.TabIndex = 10;
             // 
             // ShowExpenseCategories

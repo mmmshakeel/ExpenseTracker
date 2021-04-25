@@ -66,6 +66,7 @@ namespace ExpenseTracker
             this.rightPanel.Controls.Add(this.newTransactionForm);
             this.newTransactionForm.Show();
             this.newTransactionFormAdded = true;
+            this.financeLeftPaneForm.AddTransactionForm = this.newTransactionForm;
 
             /* ================ events left pane forms ================ */
             // load the Events left pane to load when button click

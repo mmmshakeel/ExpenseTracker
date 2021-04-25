@@ -20,7 +20,7 @@ namespace ExpenseTracker
         public ShowTransactionsList TransactionsListForm { get; set; }
         public ShowIncomeSources IncomeSourcesForm { get; set; }
         public ShowExpenseCategories ExpenseCategoriesForm { get; set; }
-       
+        public AddTransaction AddTransactionForm { get; set; }
 
         private void FinanceLeftPaneForm_Load(object sender, EventArgs e)
         {
@@ -58,6 +58,13 @@ namespace ExpenseTracker
         {
             this.ExpenseCategoriesForm.Show();
             this.ExpenseCategoriesForm.BringToFront();
+        }
+
+        private void NewTransaction_Click(object sender, EventArgs e)
+        {
+            this.AddTransactionForm.Activate();
+            this.AddTransactionForm.Show();
+            this.AddTransactionForm.BringToFront();
         }
     }
 }

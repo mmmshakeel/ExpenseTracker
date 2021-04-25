@@ -41,7 +41,7 @@ namespace ExpenseTracker
             // newTransactionButton
             // 
             this.newTransactionButton.BackColor = System.Drawing.SystemColors.Highlight;
-            this.newTransactionButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.newTransactionButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.newTransactionButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.newTransactionButton.Location = new System.Drawing.Point(37, 46);
             this.newTransactionButton.Name = "newTransactionButton";
@@ -49,11 +49,12 @@ namespace ExpenseTracker
             this.newTransactionButton.TabIndex = 0;
             this.newTransactionButton.Text = "New Transaction";
             this.newTransactionButton.UseVisualStyleBackColor = false;
+            this.newTransactionButton.Click += new System.EventHandler(this.NewTransaction_Click);
             // 
             // transactionsMenuLabel
             // 
             this.transactionsMenuLabel.AutoSize = true;
-            this.transactionsMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.transactionsMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.transactionsMenuLabel.Location = new System.Drawing.Point(43, 104);
             this.transactionsMenuLabel.Name = "transactionsMenuLabel";
             this.transactionsMenuLabel.Size = new System.Drawing.Size(83, 17);
@@ -64,7 +65,7 @@ namespace ExpenseTracker
             // incomeMenuLabel
             // 
             this.incomeMenuLabel.AutoSize = true;
-            this.incomeMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.incomeMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.incomeMenuLabel.Location = new System.Drawing.Point(43, 141);
             this.incomeMenuLabel.Name = "incomeMenuLabel";
             this.incomeMenuLabel.Size = new System.Drawing.Size(53, 17);
@@ -75,7 +76,7 @@ namespace ExpenseTracker
             // expenseMenuLabel
             // 
             this.expenseMenuLabel.AutoSize = true;
-            this.expenseMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.expenseMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.expenseMenuLabel.Location = new System.Drawing.Point(43, 177);
             this.expenseMenuLabel.Name = "expenseMenuLabel";
             this.expenseMenuLabel.Size = new System.Drawing.Size(58, 17);
@@ -86,7 +87,7 @@ namespace ExpenseTracker
             // incomeSourcesMenuLabel
             // 
             this.incomeSourcesMenuLabel.AutoSize = true;
-            this.incomeSourcesMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.incomeSourcesMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.incomeSourcesMenuLabel.Location = new System.Drawing.Point(43, 213);
             this.incomeSourcesMenuLabel.Name = "incomeSourcesMenuLabel";
             this.incomeSourcesMenuLabel.Size = new System.Drawing.Size(104, 17);
@@ -97,7 +98,7 @@ namespace ExpenseTracker
             // expenseCategoriesMenuLabel
             // 
             this.expenseCategoriesMenuLabel.AutoSize = true;
-            this.expenseCategoriesMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.expenseCategoriesMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.expenseCategoriesMenuLabel.Location = new System.Drawing.Point(43, 249);
             this.expenseCategoriesMenuLabel.Name = "expenseCategoriesMenuLabel";
             this.expenseCategoriesMenuLabel.Size = new System.Drawing.Size(126, 17);
@@ -108,7 +109,7 @@ namespace ExpenseTracker
             // financePredictorMenuLabel
             // 
             this.financePredictorMenuLabel.AutoSize = true;
-            this.financePredictorMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.financePredictorMenuLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.financePredictorMenuLabel.Location = new System.Drawing.Point(43, 286);
             this.financePredictorMenuLabel.Name = "financePredictorMenuLabel";
             this.financePredictorMenuLabel.Size = new System.Drawing.Size(113, 17);
@@ -128,7 +129,7 @@ namespace ExpenseTracker
             this.Controls.Add(this.incomeMenuLabel);
             this.Controls.Add(this.transactionsMenuLabel);
             this.Controls.Add(this.newTransactionButton);
-            this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Name = "FinanceLeftPaneForm";
             this.Text = "Finance Pane";
             this.Load += new System.EventHandler(this.FinanceLeftPaneForm_Load);
