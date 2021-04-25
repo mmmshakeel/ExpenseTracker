@@ -62,7 +62,8 @@ namespace ExpenseTracker
                 transactionRow.Currency = this.comboTransactionCurrency.SelectedItem.ToString();
                 transactionRow.Amount = this.ConvertAmountToDouble(this.textTransactionAmount.Text);
                 transactionRow.TransactionType = this.comboTransactionType.SelectedItem.ToString();
-                
+                transactionRow.RecurrentType = this.comboTransactionRecurrentType.SelectedItem.ToString();
+
                 if (this.comboTransactionType.SelectedItem.ToString().Equals("Expense"))
                 {
                     ExpenseTrackerDB.ExpenseCategoryRow expenseCategoryRow =
@@ -70,16 +71,21 @@ namespace ExpenseTracker
                     expenseCategoryRow.Name = this.comboTransactionCategory.SelectedItem.ToString();
 
                     transactionRow.ExpenseCategoryRow = expenseCategoryRow;
-
                     this.expenseTrackerDataSet.Transaction.AddTransactionRow(transactionRow);
                     this.expenseTrackerDataSet.ExpenseCategory.AddExpenseCategoryRow(expenseCategoryRow);
-                    this.expenseTrackerDataSet.AcceptChanges();
+                    
                 } else
                 {
-                    transactionRow.IncomeSourceRow.Name = this.comboTransactionCategory.SelectedItem.ToString();
+                    ExpenseTrackerDB.IncomeSourceRow incomeSourceRow =
+                        this.expenseTrackerDataSet.IncomeSource.NewIncomeSourceRow();
+                    incomeSourceRow.Name = this.comboTransactionCategory.SelectedItem.ToString();
+
+                    transactionRow.IncomeSourceRow = incomeSourceRow;
+                    this.expenseTrackerDataSet.Transaction.AddTransactionRow(transactionRow);
+                    this.expenseTrackerDataSet.IncomeSource.AddIncomeSourceRow(incomeSourceRow);
                 }
 
-                transactionRow.RecurrentType = this.comboTransactionRecurrentType.SelectedItem.ToString();
+                this.expenseTrackerDataSet.AcceptChanges();
 
                 // write to xml before forwarding to DB
                 this.expenseTrackerDataSet.WriteXml("ExpenseTrackerDB.Transaction.xml");
