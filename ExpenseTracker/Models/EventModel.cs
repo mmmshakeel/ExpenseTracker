@@ -30,5 +30,22 @@ namespace ExpenseTracker.Models
             this.db.SaveChanges();
             return true;
         }
+
+        public List<Event> GetList(DateTime startDate, DateTime endDate, String eventType)
+        {
+            if (eventType.Equals("Appointments"))
+            {
+                eventType = "Appointment";
+            } else
+            {
+                eventType = "Task";
+            }
+            using (var ctx = new ExpenseTrackerDatabaseContainer())
+            {
+                return ctx.Events.Where(s => s.From >= startDate)
+                    .Where(s => s.To <= endDate)
+                    .Where(s => s.EventType == eventType).ToList();
+            }
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace ExpenseTracker
                 eventRow.To = this.dateTimeEventTo.Value;
                 eventRow.Repeat = this.comboEventRepeat.SelectedItem.ToString();
                 eventRow.Reminder = this.comboEventReminder.SelectedItem.ToString();
-                eventRow.Currency = this.comboEventCurrency.SelectedIndex.ToString();
+                eventRow.Currency = this.comboEventCurrency.SelectedItem.ToString();
                 eventRow.Cost = this.ConvertAmountToDouble(this.textBoxEventCost.Text);
                 eventRow.Details = this.textBoxEventDetails.Text;
 
@@ -83,7 +83,7 @@ namespace ExpenseTracker
                 eventDetails.To = this.dateTimeEventTo.Value;
                 eventDetails.Repeat = this.comboEventRepeat.SelectedItem.ToString();
                 eventDetails.Reminder = this.comboEventReminder.SelectedItem.ToString();
-                eventDetails.Currency = this.comboEventCurrency.SelectedIndex.ToString();
+                eventDetails.Currency = this.comboEventCurrency.SelectedItem.ToString();
                 eventDetails.Cost = this.ConvertAmountToDouble(this.textBoxEventCost.Text);
                 eventDetails.Details = this.textBoxEventDetails.Text;
 

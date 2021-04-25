@@ -20,7 +20,7 @@ namespace ExpenseTracker
 
         private void AppointmentsMenuItem_Click(object sender, EventArgs e)
         {
-            this.ShowEventsForm.UpdateFormHeading(sender);
+            this.ShowEventsForm.UpdateFormHeading(sender, e);
             this.ShowEventsForm.Activate();
             this.ShowEventsForm.Show();
             this.ShowEventsForm.BringToFront();
@@ -28,7 +28,7 @@ namespace ExpenseTracker
 
         private void TasksMenuItem_Click(object sender, EventArgs e)
         {
-            this.ShowEventsForm.UpdateFormHeading(sender);
+            this.ShowEventsForm.UpdateFormHeading(sender, e);
             this.ShowEventsForm.Activate();
             this.ShowEventsForm.Show();
             this.ShowEventsForm.BringToFront();
