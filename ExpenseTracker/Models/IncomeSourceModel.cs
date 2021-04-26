@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ExpenseTracker.Models
@@ -11,9 +13,8 @@ namespace ExpenseTracker.Models
         private ExpenseTrackerDatabaseContainer db = new ExpenseTrackerDatabaseContainer();
 
 
-        public bool AddIncomeSource(String name)
+        /*public bool AddIncomeSource(String name)
         {
-
             // income source name is unique
             int source = this.db.IncomeSources.Where(s => s.Name == name).Count();
             if (source > 0)
@@ -27,27 +28,53 @@ namespace ExpenseTracker.Models
             this.db.SaveChanges();
 
             return true;
-        }
+        }*/
 
-
-        public bool UpdateIncomeSource(String name, int incomeId)
+        public async Task<Boolean> AddIncomeSourceAsync(String name)
         {
 
-            // expense category name is unique
-            int source = this.db.IncomeSources.Where(s => s.Name == name).Count();
-            if (source > 0)
-            {
-                throw new Exception($"Income source '{name}' already exists");
-            }
+            await Task.Run(() => {
 
-            IncomeSource incomeSource = this.db.IncomeSources.Find(incomeId);
-            if (incomeSource == null)
-            {
-                throw new Exception("Update error: Income source not found!");
-            }
+                // income source name is unique
+                using (var db = new ExpenseTrackerDatabaseContainer())
+                {
+                    int source = db.IncomeSources.Where(s => s.Name == name).Count();
+                    if (source > 0)
+                    {
+                        throw new Exception($"Income source '{name}' already exists");
+                    }
 
-            incomeSource.Name = name;
-            this.db.SaveChanges();
+                    IncomeSource incomeSource = new IncomeSource();
+                    incomeSource.Name = name;
+                    db.IncomeSources.Add(incomeSource);
+                    db.SaveChanges();
+                }
+            });
+
+            return true;
+        }
+
+        public async Task<Boolean> UpdateIncomeSourceAsync(String name, int incomeId)
+        {
+
+            await Task.Run(() => {
+
+                // expense category name is unique
+                int source = this.db.IncomeSources.Where(s => s.Name == name).Count();
+                if (source > 0)
+                {
+                    throw new Exception($"Income source '{name}' already exists");
+                }
+
+                IncomeSource incomeSource = this.db.IncomeSources.Find(incomeId);
+                if (incomeSource == null)
+                {
+                    throw new Exception("Update error: Income source not found!");
+                }
+
+                incomeSource.Name = name;
+                this.db.SaveChanges();
+            });
 
             return true;
         }
@@ -60,11 +87,15 @@ namespace ExpenseTracker.Models
             }
         }
 
-        public void DeleteIncomeSource(int incomeId)
+        public async Task<Boolean> DeleteIncomeSourceAsync(int incomeId)
         {
-            IncomeSource incomeSource = this.db.IncomeSources.Find(incomeId);
-            this.db.IncomeSources.Remove(incomeSource);
-            this.db.SaveChanges();
+            await Task.Run(() => {
+                IncomeSource incomeSource = this.db.IncomeSources.Find(incomeId);
+                this.db.IncomeSources.Remove(incomeSource);
+                this.db.SaveChanges();
+            });
+
+            return true;
         }
 
         public IncomeSource GetIncomeSource(int incomeId)

@@ -71,6 +71,7 @@ namespace ExpenseTracker
             this.buttonExpenseCategoryDiscard.TabIndex = 8;
             this.buttonExpenseCategoryDiscard.Text = global::ExpenseTracker.Properties.Resources.BTN_TXT_DISCARD;
             this.buttonExpenseCategoryDiscard.UseVisualStyleBackColor = true;
+            this.buttonExpenseCategoryDiscard.Click += new System.EventHandler(this.Discard);
             // 
             // textBoxExpenseCategory
             // 

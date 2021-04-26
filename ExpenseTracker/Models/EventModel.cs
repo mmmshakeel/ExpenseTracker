@@ -11,23 +11,25 @@ namespace ExpenseTracker.Models
 
         private ExpenseTrackerDatabaseContainer db = new ExpenseTrackerDatabaseContainer();
 
-        public bool AddEvent(EventDetails eventDetails)
+        public async Task<Boolean> AddEvent(EventDetails eventDetails)
         {
-            Event newEvent = new Event();
+            await Task.Run(() => {
+                Event newEvent = new Event();
 
-            newEvent.Name = eventDetails.Name;
-            newEvent.EventType = eventDetails.EventType;
-            newEvent.Location = eventDetails.Location;
-            newEvent.From = eventDetails.From;
-            newEvent.To = eventDetails.To;
-            newEvent.Repeat = eventDetails.Repeat;
-            newEvent.Reminder = eventDetails.Reminder;
-            newEvent.Details = eventDetails.Details;
-            newEvent.Currency = eventDetails.Currency;
-            newEvent.Cost = eventDetails.Cost;
+                newEvent.Name = eventDetails.Name;
+                newEvent.EventType = eventDetails.EventType;
+                newEvent.Location = eventDetails.Location;
+                newEvent.From = eventDetails.From;
+                newEvent.To = eventDetails.To;
+                newEvent.Repeat = eventDetails.Repeat;
+                newEvent.Reminder = eventDetails.Reminder;
+                newEvent.Details = eventDetails.Details;
+                newEvent.Currency = eventDetails.Currency;
+                newEvent.Cost = eventDetails.Cost;
 
-            this.db.Events.Add(newEvent);
-            this.db.SaveChanges();
+                this.db.Events.Add(newEvent);
+                this.db.SaveChanges();
+            });
             return true;
         }
 

@@ -160,7 +160,7 @@ namespace ExpenseTracker
                         this.expenseCategoryModel.GetExpenseCategory(transactionList[i].ExpenseCategoryId);
                     labelCategory[i] = new Label
                     {
-                        Text = expenseCategory.Name,
+                        Text = expenseCategory?.Name,
                         Location = new Point(299, 29 + i * 25),
                         Size = new Size(94, 15)
                     };

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExpenseTracker.Models;
 
@@ -44,7 +45,7 @@ namespace ExpenseTracker
            
         }
 
-        private void save(object sender, EventArgs e)
+        private async void save(object sender, EventArgs e)
         {
             try
             {
@@ -85,7 +86,7 @@ namespace ExpenseTracker
                 this.expenseTrackerDataSet.AcceptChanges();
 
                 // write to xml before forwarding to DB
-                this.expenseTrackerDataSet.WriteXml("ExpenseTrackerDB.Transaction.xml");
+                await this.WriteFileAsync(this.expenseTrackerDataSet);
 
                 // write to db
                 transactionDetails.date = this.dateTimeTransaction.Value;
@@ -96,7 +97,8 @@ namespace ExpenseTracker
                 transactionDetails.category = this.comboTransactionCategory.SelectedItem.ToString();
                 transactionDetails.recurrence = this.comboTransactionRecurrentType.SelectedItem.ToString();
 
-                if (this.transactionModel.AddTransactionRecord(transactionDetails) == true)
+                bool result = await this.transactionModel.AddTransactionRecord(transactionDetails);
+                if (result == true)
                 {
                     // delete the xml file when sucess.
                     this.deleteFile("ExpenseTrackerDB.Transaction.xml");
@@ -122,10 +124,13 @@ namespace ExpenseTracker
             {
                 List<ExpenseCategory> expenseCategories = this.expenseCategoryModel.GetAll();
 
-                this.comboTransactionCategory.Items.Clear();
-                for (int i=0; i < expenseCategories.Count; i++)
+                if (expenseCategories != null)
                 {
-                    this.comboTransactionCategory.Items.Add(expenseCategories[i].Name);
+                    this.comboTransactionCategory.Items.Clear();
+                    for (int i = 0; i < expenseCategories.Count; i++)
+                    {
+                        this.comboTransactionCategory.Items.Add(expenseCategories[i].Name);
+                    }
                 }
             }
 
@@ -133,10 +138,13 @@ namespace ExpenseTracker
             {
                 List<IncomeSource> incomeSources = this.incomeSourceModel.GetAll();
 
-                this.comboTransactionCategory.Items.Clear();
-                for (int i = 0; i < incomeSources.Count; i++)
+                if (incomeSources != null)
                 {
-                    this.comboTransactionCategory.Items.Add(incomeSources[i].Name);
+                    this.comboTransactionCategory.Items.Clear();
+                    for (int i = 0; i < incomeSources.Count; i++)
+                    {
+                        this.comboTransactionCategory.Items.Add(incomeSources[i].Name);
+                    }
                 }
             }
         }
@@ -226,6 +234,14 @@ namespace ExpenseTracker
             return DateTime.Now;
 
             //https://stackoverflow.com/questions/919244/converting-a-string-to-datetime
+        }
+
+        private async Task<Boolean> WriteFileAsync(ExpenseTrackerDB expenseTrackerDataSet)
+        {
+            await Task.Run(() => {
+                this.expenseTrackerDataSet.ExpenseCategory.WriteXml("ExpenseTrackerDB.Transaction.xml");
+            });
+            return true;
         }
     }
 }

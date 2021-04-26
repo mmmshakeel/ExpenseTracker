@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ExpenseTracker.Models
@@ -11,44 +12,50 @@ namespace ExpenseTracker.Models
         private ExpenseTrackerDatabaseContainer db = new ExpenseTrackerDatabaseContainer();
 
 
-        public Boolean AddCategory(String name)
+        public async Task<Boolean> AddCategory(String name)
         {
-            
+
             // expense category name is unique
-            int category = this.db.ExpenseCategories.Where(s => s.Name == name).Count();
-            if (category > 0)
-            {
-                throw new Exception($"Expense category '{name}' already exists");
-            }
+            await Task.Run(() => {
 
-            ExpenseCategory expenseCategory = new ExpenseCategory();
-            expenseCategory.Name = name;
-            this.db.ExpenseCategories.Add(expenseCategory);
+                //Thread.Sleep(5000);
+                int category = this.db.ExpenseCategories.Where(s => s.Name == name).Count();
+                if (category > 0)
+                {
+                    throw new Exception($"Expense category '{name}' already exists");
+                }
+
+                ExpenseCategory expenseCategory = new ExpenseCategory();
+                expenseCategory.Name = name;
+                this.db.ExpenseCategories.Add(expenseCategory);
 
 
-            this.db.SaveChanges();
+                this.db.SaveChanges();
+            });
 
             return true;
         }
 
-        public Boolean UpdateCategory(String name, int catId)
+        public async Task<Boolean> UpdateCategory(String name, int catId)
         {
 
-            // expense category name is unique
-            int category = this.db.ExpenseCategories.Where(s => s.Name == name).Count();
-            if (category > 0)
-            {
-                throw new Exception($"Expense category '{name}' already exists");
-            }
+            await Task.Run(() => {
+                // expense category name is unique
+                int category = this.db.ExpenseCategories.Where(s => s.Name == name).Count();
+                if (category > 0)
+                {
+                    throw new Exception($"Expense category '{name}' already exists");
+                }
 
-            ExpenseCategory expenseCategory = this.db.ExpenseCategories.Find(catId);
-            if (expenseCategory == null)
-            {
-                throw new Exception("Update error: Expense category not found!");
-            }
+                ExpenseCategory expenseCategory = this.db.ExpenseCategories.Find(catId);
+                if (expenseCategory == null)
+                {
+                    throw new Exception("Update error: Expense category not found!");
+                }
 
-            expenseCategory.Name = name;
-            this.db.SaveChanges();
+                expenseCategory.Name = name;
+                this.db.SaveChanges();
+            });
 
             return true;
         }
@@ -61,24 +68,24 @@ namespace ExpenseTracker.Models
             }
         }
 
-        public void DeleteCategory(int catId)
+        public async Task<Boolean> DeleteCategory(int catId)
         {
-            ExpenseCategory expenseCategory = this.db.ExpenseCategories.Find(catId);
-            this.db.ExpenseCategories.Remove(expenseCategory);
-            this.db.SaveChanges();
+            await Task.Run(() => {
+                ExpenseCategory expenseCategory = this.db.ExpenseCategories.Find(catId);
+                this.db.ExpenseCategories.Remove(expenseCategory);
+                this.db.SaveChanges();
+            });
+
+            return true;
         }
 
         public ExpenseCategory GetExpenseCategory(int catId)
         {
-            ExpenseCategory category = this.db.ExpenseCategories.Find(catId);
-
-            if (category.Id == catId)
+            using (var ctx = new ExpenseTrackerDatabaseContainer())
             {
+                ExpenseCategory category = ctx.ExpenseCategories.Find(catId);
                 return category;
             }
-
-            // no match found, return null
-            return null;
         }
     }
 }

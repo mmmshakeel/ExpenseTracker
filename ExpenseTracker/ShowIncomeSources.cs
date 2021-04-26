@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using ExpenseTracker.Models;
 using ExpenseTracker.CustomElements;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace ExpenseTracker
 {
@@ -47,7 +48,7 @@ namespace ExpenseTracker
             this.Controls.Add(updateButton);
         }
 
-        private void Save(object sender, EventArgs e)
+        private async void Save(object sender, EventArgs e)
         {
             // check for empty value
             if (this.textBoxIncomeSource.Text.Equals(""))
@@ -68,7 +69,8 @@ namespace ExpenseTracker
                 // write to xml before forwarding to DB
                 this.expenseTrackerDataSet.ExpenseCategory.WriteXml("ExpenseTrackerDB.IncomeSources.xml");
 
-                if (this.incomeSourceModel.AddIncomeSource(this.textBoxIncomeSource.Text) == true)
+                bool saveResult = await this.incomeSourceModel.AddIncomeSourceAsync(this.textBoxIncomeSource.Text);
+                if (saveResult == true)
                 {
                     // delete the xml file when sucess.
                     this.deleteFile("ExpenseTrackerDB.IncomeSources.xml");
@@ -121,7 +123,7 @@ namespace ExpenseTracker
             }
         }
 
-        private void DeleteExpenseCategory(object sender, EventArgs e)
+        private async void DeleteExpenseCategory(object sender, EventArgs e)
         {
             // ask for confirmation
             DialogResult result = MessageBox.Show("Are you sure to delete the income source?",
@@ -130,7 +132,7 @@ namespace ExpenseTracker
             if (result == DialogResult.Yes)
             {
                 int catId = ((CategoryButton)sender).Id;
-                this.incomeSourceModel.DeleteIncomeSource(catId);
+                await this.incomeSourceModel.DeleteIncomeSourceAsync(catId);
 
                 // refresh list
                 this.ShowIncomeSourceList();
@@ -153,7 +155,7 @@ namespace ExpenseTracker
             }
         }
 
-        private void UpdateIncomeSource(object sender, EventArgs e)
+        private async void UpdateIncomeSource(object sender, EventArgs e)
         {
             int catId = ((CustomElements.CategoryButton)sender).Id;
 
@@ -170,16 +172,16 @@ namespace ExpenseTracker
             this.expenseTrackerDataSet.AcceptChanges();
 
             // write to xml before forwarding to DB
-            this.expenseTrackerDataSet.ExpenseCategory.WriteXml("ExpenseTrackerDB.ExpenseCategories.xml");
+            await this.WriteFileAsync(this.expenseTrackerDataSet);
 
             // forward to DB  
             try
             {
-
-                if (this.incomeSourceModel.UpdateIncomeSource(this.textBoxIncomeSource.Text, catId) == true)
+                bool result = await this.incomeSourceModel.UpdateIncomeSourceAsync(this.textBoxIncomeSource.Text, catId);
+                if (result == true)
                 {
                     // delete the xml file when sucess.
-                    this.deleteFile("ExpenseTrackerDB.ExpenseCategories.xml");
+                    this.deleteFile("ExpenseTrackerDB.IncomeSources.xml");
                     this.textBoxIncomeSource.Text = "";
 
                     // refresh list
@@ -207,6 +209,14 @@ namespace ExpenseTracker
             this.updateButton.Id = 0;
             this.updateButton.Visible = false;
             this.buttonIncomeSourceSave.Visible = true;
+        }
+
+        private async Task<Boolean> WriteFileAsync(ExpenseTrackerDB expenseTrackerDataSet)
+        {
+            await Task.Run(() => {
+                this.expenseTrackerDataSet.ExpenseCategory.WriteXml("ExpenseTrackerDB.IncomeSources.xml");
+            });
+            return true;
         }
     }
 }

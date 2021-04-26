@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExpenseTracker.Models;
 
@@ -49,7 +50,7 @@ namespace ExpenseTracker
             }
         }
 
-        private void save(object sender, EventArgs e)
+        private async void save(object sender, EventArgs e)
         {
             try
             {
@@ -73,7 +74,7 @@ namespace ExpenseTracker
                 this.expenseTrackerDataSet.AcceptChanges();
 
                 // wrtie to xml
-                this.expenseTrackerDataSet.Event.WriteXml("ExpenseTrackerDB.Event.xml");
+                await this.WriteFileAsync(this.expenseTrackerDataSet);
 
                 // save to database
                 eventDetails.Name = this.textBoxEventName.Text;
@@ -87,7 +88,8 @@ namespace ExpenseTracker
                 eventDetails.Cost = this.ConvertAmountToDouble(this.textBoxEventCost.Text);
                 eventDetails.Details = this.textBoxEventDetails.Text;
 
-                if (this.eventModel.AddEvent(eventDetails) == true)
+                bool result = await this.eventModel.AddEvent(eventDetails);
+                if (result == true)
                 {
                     // delete the xml file when sucess.
                     this.deleteFile("ExpenseTrackerDB.Event.xml");
@@ -187,6 +189,14 @@ namespace ExpenseTracker
             this.comboEventRepeat.SelectedIndex = 0;
             this.comboEventReminder.SelectedIndex = 0;
             this.comboEventCurrency.SelectedIndex = 0;
+        }
+
+        private async Task<Boolean> WriteFileAsync(ExpenseTrackerDB expenseTrackerDataSet)
+        {
+            await Task.Run(() => {
+                this.expenseTrackerDataSet.ExpenseCategory.WriteXml("ExpenseTrackerDB.Event.xml");
+            });
+            return true;
         }
     }
 }
