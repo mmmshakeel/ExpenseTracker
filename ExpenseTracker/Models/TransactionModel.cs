@@ -37,5 +37,36 @@ namespace ExpenseTracker.Models
             this.db.SaveChanges();
             return true;
         }
+
+        public List<Transaction> GetList(DateTime startDate, DateTime endDate, ShowTransactionsList.TransactionType transactionType)
+        {
+            String transactionFilter = "";
+
+            if (transactionType == ShowTransactionsList.TransactionType.Income)
+            {
+                transactionFilter = "Income";
+            } else if (transactionType == ShowTransactionsList.TransactionType.Expense)
+            {
+                transactionFilter = "Expense";
+            }
+
+            if (transactionFilter.Equals(""))
+            {
+                using (var ctx = new ExpenseTrackerDatabaseContainer())
+                {
+                    return ctx.Transactions.Where(t => t.Date >= startDate)
+                        .Where(t => t.Date <= endDate).ToList();
+                }
+            } else
+            {
+                using (var ctx = new ExpenseTrackerDatabaseContainer())
+                {
+                    return ctx.Transactions.Where(t => t.Date >= startDate)
+                        .Where(t => t.Date <= endDate)
+                        .Where(t => t.TransactionType == transactionFilter).ToList();
+                }
+            }
+            
+        }
     }
 }

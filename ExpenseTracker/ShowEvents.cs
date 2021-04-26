@@ -47,7 +47,7 @@ namespace ExpenseTracker
             if (eventsList.Count == 0)
             {
                 Label label = new Label();
-                label.Text = "No event found on the selected date range";
+                label.Text = "No events found on the selected date range";
                 label.Font = new Font("Segoe UI Semibold", 9, FontStyle.Bold);
                 label.ForeColor = Color.Maroon;
                 label.Location = new Point(223, 52);
